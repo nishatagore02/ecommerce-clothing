@@ -5,17 +5,18 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
 } from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDCyaEyH8ZnbCyoEjBM6j4gE-vUf6vjYM0",
-    authDomain: "clothing-48eaf.firebaseapp.com",
-    projectId: "clothing-48eaf",
-    storageBucket: "clothing-48eaf.appspot.com",
-    messagingSenderId: "244431302084",
-    appId: "1:244431302084:web:f75d907b0dedca49ef8891"
-  };
+  apiKey: "AIzaSyDCyaEyH8ZnbCyoEjBM6j4gE-vUf6vjYM0",
+  authDomain: "clothing-48eaf.firebaseapp.com",
+  projectId: "clothing-48eaf",
+  storageBucket: "clothing-48eaf.appspot.com",
+  messagingSenderId: "244431302084",
+  appId: "1:244431302084:web:f75d907b0dedca49ef8891"
+};
 
 const firebaseApp = initializeApp(firebaseConfig);
 
@@ -66,4 +67,10 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
 
   return await createUserWithEmailAndPassword(auth, email, password);
+};
+
+export const signInAuthUserWithEmailAndPassword = async (email, password) => {
+  if (!email || !password) return;
+
+  return await signInWithEmailAndPassword(auth, email, password);
 };
